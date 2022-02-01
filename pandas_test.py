@@ -54,7 +54,18 @@ df_students.Grade = df_students.Grade.fillna(df_students.Grade.mean())
 # df_students = df_students.dropna(axis=0, how='any') #removeu as linhas que continham dados faltantes
 # print(df_students)
 
-mean_study = df_students['StudyHours'].mean()
+
+#pega as medias de cada coluna passando seu nome como index
+mean_study = df_students['StudyHours'].mean() 
 mean_grade = df_students['Grade'].mean()
 
-print("Média semanal de horas de estudo: {:.2f}\nMédia da nota: {:.2f}".format(mean_study, mean_grade))
+# print("Média semanal de horas de estudo: {:.2f}\nMédia da nota: {:.2f}".format(mean_study, mean_grade))
+
+# print(df_students[df_students.StudyHours > mean_study]) #retorna somente as linhas com horas de estudo maiores do que a media
+
+# print(df_students[df_students.StudyHours > mean_study].Grade.mean()) #as medias das notas
+
+passes = pd.Series(df_students['Grade'] >= 60)
+df_students = pd.concat([df_students, passes.rename("Pass")], axis=1) #cria uma nova coluna na tabela mostrando cada coluna se é maior ou menor que 60
+
+print(df_students)
