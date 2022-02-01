@@ -2,6 +2,7 @@ data = [50,50,47,97,49,3,53,42,26,74,82,62,37,15,70,27,36,35,48,52,63,64]
 
 from array import array
 from random import Random, randint
+from re import S
 # from this import d
 import numpy as np
 
@@ -68,4 +69,6 @@ mean_grade = df_students['Grade'].mean()
 passes = pd.Series(df_students['Grade'] >= 60)
 df_students = pd.concat([df_students, passes.rename("Pass")], axis=1) #cria uma nova coluna na tabela mostrando cada coluna se é maior ou menor que 60
 
-print(df_students)
+# print(df_students.groupby(df_students.Pass).Name.count()) #conta quantos valores de cada tipo existem
+print(print(df_students.groupby(df_students.Pass)['StudyHours', 'Grade'].mean())) #mostra a media dos que passaram e dos que nao passaram
+print(df_students.sort_values('Grade', ascending=False)) #ordena a lista com base na coluna Grade
