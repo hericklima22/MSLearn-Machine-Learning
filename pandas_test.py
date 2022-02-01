@@ -50,7 +50,11 @@ df_students = pd.read_csv('grades.csv',delimiter=',',header='infer')
 # print(df_students.isnull().sum()) #soma a quantidade de itens faltantes
 # print(df_students[df_students.isnull().any(axis=1)]) #mostra somente as linhas dos dados faltantes
 df_students.StudyHours = df_students.StudyHours.fillna(df_students.StudyHours.mean()) #para lidar com os dados faltantes a gente assume que os que esão faltando são a média dos outros
-# df_students.Grade = df_students.Grade.fillna(df_students.Grade.mean())
-df_students = df_students.dropna(axis=0, how='any') #removeu as linhas que continham dados faltantes
+df_students.Grade = df_students.Grade.fillna(df_students.Grade.mean())
+# df_students = df_students.dropna(axis=0, how='any') #removeu as linhas que continham dados faltantes
+# print(df_students)
 
-print(df_students)
+mean_study = df_students['StudyHours'].mean()
+mean_grade = df_students['Grade'].mean()
+
+print("Média semanal de horas de estudo: {:.2f}\nMédia da nota: {:.2f}".format(mean_study, mean_grade))
