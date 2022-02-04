@@ -11,4 +11,8 @@ passes = pd.Series(df_students['Grade'] >= 60)
 #salva quem passou no dataframe do pandas
 df_students = pd.concat([df_students, passes.rename("Pass")], axis=1)
 
-print(df_students)
+from matplotlib import pyplot as plt
+
+plt.bar(x=df_students.Name, height=df_students.Grade)
+
+plt.show()
