@@ -96,11 +96,47 @@ mod_val = var.mode()[0]
 
 # fig.show()
 
-var = df_students['Grade']
+# var = df_students['Grade']
 
-fig = plt.figure(figsize=(10,4))
+# fig = plt.figure(figsize=(10,4))
 
-plt.boxplot(var)
-plt.title('Distribuicao de dados')
+# plt.boxplot(var)
+# plt.title('Distribuicao de dados')
 
-fig.show()
+# fig.show()
+
+
+def show_distribution(var_data):
+    min_val = var_data.min()
+    max_val = var_data.max()
+    mean_val = var_data.max()
+    med_val = var_data.median()
+    mod_val = var_data.mode()[0]
+
+    print('Minimum:{:.2f}\nMean:{:.2f}\nMedian:{:.2f}\nMode:{:.2f}\nMaximum:{:.2f}\n'.format(min_val,
+                                                                                            mean_val,
+                                                                                            med_val,
+                                                                                            mod_val,
+                                                                                            max_val))
+
+    fig, ax = plt.subplots(2, 1, figsize=(10,4))
+
+    ax[0].hist(var_data)
+    ax[0].set_ylabel('Frequencia')
+
+    ax[0].axvline(x=min_val, color='gray', linestyle='dashed', linewidth = 2)
+    ax[0].axvline(x=max_val, color='cyan', linestyle='dashed', linewidth = 2)
+    ax[0].axvline(x=mean_val, color='red', linestyle='dashed', linewidth = 2)
+    ax[0].axvline(x=med_val, color='yellow', linestyle='dashed', linewidth = 2)
+    ax[0].axvline(x=mod_val, color='gray', linestyle='dashed', linewidth = 2)
+
+    ax[1].boxplot(var_data, vert=False)
+    ax[1].set_label('Valor')
+
+    fig.suptitle('Distribuicao de dados')
+
+    fig.show()
+
+col = df_students['Grade']
+
+show_distribution(col)

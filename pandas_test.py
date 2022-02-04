@@ -72,8 +72,3 @@ df_students = pd.concat([df_students, passes.rename("Pass")], axis=1) #cria uma 
 # print(df_students.groupby(df_students.Pass).Name.count()) #conta quantos valores de cada tipo existem
 # print(print(df_students.groupby(df_students.Pass)['StudyHours', 'Grade'].mean())) #mostra a media dos que passaram e dos que nao passaram
 # print(df_students.sort_values('Grade', ascending=False)) #ordena a lista com base na coluna Grade
-
-for i in range(5):
-    for j in range(5):
-        print("# ")
-    print("\n")
