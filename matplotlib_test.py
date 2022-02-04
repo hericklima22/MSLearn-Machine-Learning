@@ -1,4 +1,3 @@
-from click import pass_context
 import pandas as pd
 
 df_students = pd.read_csv('grades.csv', delimiter=',', header='infer')
@@ -49,15 +48,49 @@ from matplotlib import pyplot as plt
 # fig.show()
 
 
-var_data = df_students['Grade']
+# var_data = df_students['Grade']
 
-fig = plt.figure(figsize=(10,4))
+# fig = plt.figure(figsize=(10,4))
 
-# plota o histograma
-plt.hist(var_data)
+# # plota o histograma
+# plt.hist(var_data)
 
-#adiciona titulo e labels
-plt.title('Distribuicao de dados')
+# #adiciona titulo e labels
+# plt.title('Distribuicao de dados')
+# plt.xlabel('Valor')
+# plt.ylabel('Frequencia')
+
+
+#pega a variavel para examinar
+var = df_students['Grade']
+# print(var)
+
+min_val = var.min()
+max_val = var.max()
+mean_val = var.mean()
+med_val = var.median()
+mod_val = var.mode()[0]
+
+# print('Minimum:{:.2f}\nMean:{:.2f}\nMedian:{:.2f}\nMode:{:.2f}\nMaximum:{:.2f}\n'.format(min_val,
+#                                                                                         mean_val,
+#                                                                                         med_val,
+#                                                                                         mod_val,
+#                                                                                         max_val))
+
+fig = plt.figure(figsize=(10, 4))
+
+#cria o histograma
+plt.hist(var)
+
+#desenha as linhas das estatísticas
+plt.axvline(x=min_val, color='gray', linestyle='dashed', linewidth = 2)
+plt.axvline(x=max_val, color='cyan', linestyle='dashed', linewidth = 2)
+plt.axvline(x=mean_val, color='red', linestyle='dashed', linewidth = 2)
+plt.axvline(x=med_val, color='yellow', linestyle='dashed', linewidth = 2)
+plt.axvline(x=mod_val, color='gray', linestyle='dashed', linewidth = 2)
+
+
+plt.title("Distribuicao de dados")
 plt.xlabel('Valor')
 plt.ylabel('Frequencia')
 
