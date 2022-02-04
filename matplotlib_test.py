@@ -77,21 +77,30 @@ mod_val = var.mode()[0]
 #                                                                                         mod_val,
 #                                                                                         max_val))
 
-fig = plt.figure(figsize=(10, 4))
+# fig = plt.figure(figsize=(10, 4))
 
-#cria o histograma
-plt.hist(var)
+# #cria o histograma
+# plt.hist(var)
 
-#desenha as linhas das estatísticas
-plt.axvline(x=min_val, color='gray', linestyle='dashed', linewidth = 2)
-plt.axvline(x=max_val, color='cyan', linestyle='dashed', linewidth = 2)
-plt.axvline(x=mean_val, color='red', linestyle='dashed', linewidth = 2)
-plt.axvline(x=med_val, color='yellow', linestyle='dashed', linewidth = 2)
-plt.axvline(x=mod_val, color='gray', linestyle='dashed', linewidth = 2)
+# #desenha as linhas das estatísticas
+# plt.axvline(x=min_val, color='gray', linestyle='dashed', linewidth = 2)
+# plt.axvline(x=max_val, color='cyan', linestyle='dashed', linewidth = 2)
+# plt.axvline(x=mean_val, color='red', linestyle='dashed', linewidth = 2)
+# plt.axvline(x=med_val, color='yellow', linestyle='dashed', linewidth = 2)
+# plt.axvline(x=mod_val, color='gray', linestyle='dashed', linewidth = 2)
 
 
-plt.title("Distribuicao de dados")
-plt.xlabel('Valor')
-plt.ylabel('Frequencia')
+# plt.title("Distribuicao de dados")
+# plt.xlabel('Valor')
+# plt.ylabel('Frequencia')
+
+# fig.show()
+
+var = df_students['Grade']
+
+fig = plt.figure(figsize=(10,4))
+
+plt.boxplot(var)
+plt.title('Distribuicao de dados')
 
 fig.show()
