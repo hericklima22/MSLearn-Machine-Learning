@@ -6,12 +6,13 @@ df_students = pd.read_csv('grades.csv', delimiter=',', header='infer')
 df_students = df_students.dropna(axis=0, how='any')
 
 #calcula quem passou, assumindo que 60 é a nota para passar
-passes = pd.Series(df_students['Grade'] >= 60)
+# passes = pd.Series(df_students['Grade'] >= 60)
 
-#salva quem passou no dataframe do pandas
-df_students = pd.concat([df_students, passes.rename("Pass")], axis=1)
+# #salva quem passou no dataframe do pandas
+# df_students = pd.concat([df_students, passes.rename("Pass")], axis=1)
 
 from matplotlib import pyplot as plt
+plt.rcParams['interactive'] == True
 
 # fig = plt.figure(figsize=(8, 3))
 
@@ -62,14 +63,14 @@ from matplotlib import pyplot as plt
 
 
 #pega a variavel para examinar
-var = df_students['Grade']
+# var = df_students['Grade']
 # print(var)
 
-min_val = var.min()
-max_val = var.max()
-mean_val = var.mean()
-med_val = var.median()
-mod_val = var.mode()[0]
+# min_val = var.min()
+# max_val = var.max()
+# mean_val = var.mean()
+# med_val = var.median()
+# mod_val = var.mode()[0]
 
 # print('Minimum:{:.2f}\nMean:{:.2f}\nMedian:{:.2f}\nMode:{:.2f}\nMaximum:{:.2f}\n'.format(min_val,
 #                                                                                         mean_val,
@@ -135,8 +136,23 @@ def show_distribution(var_data):
 
     fig.suptitle('Distribuicao de dados')
 
-    fig.show()
+    plt.show()
+
+
+def show_density(var_data):
+    fig = plt.figure(figsize=(10,4))
+
+    var_data.plot.density()
+
+    plt.title('Densidade de dados')
+
+    plt.axvline(x=var_data.mean(), color='cyan', linestyle = 'dashed', linewidth = 2)
+    plt.axvline(x=var_data.median(), color='red', linestyle = 'dashed', linewidth = 2)
+    plt.axvline(x=var_data.mode()[0], color='yellow', linestyle = 'dashed', linewidth = 2)
+
+    plt.show()
 
 col = df_students['Grade']
 
-show_distribution(col)
+# show_distribution(col)
+show_density(col)
