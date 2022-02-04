@@ -13,6 +13,15 @@ df_students = pd.concat([df_students, passes.rename("Pass")], axis=1)
 
 from matplotlib import pyplot as plt
 
+fig = plt.figure(figsize=(8, 3))
+
+#cria o gráfico de barra de nomes vs notas
 plt.bar(x=df_students.Name, height=df_students.Grade)
+
+plt.title("Notas dos estudantes")
+plt.xlabel("Estudante")
+plt.ylabel("Nota")
+plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
+plt.xticks(rotation=90)
 
 plt.show()
